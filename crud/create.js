@@ -1,14 +1,6 @@
 require ("../conexion");
 const libro = require ("../models/libro");
-
-/*const crearLibros = async() => {
-    const libro1 = new libro ({
-        title: "Fray Perico y su borrico",
-        author: "Juan Muñoz",
-        description: "El Fray montado en un borrico lo peta máximo"
-    });
-    await libro1.save();
-};*/
+const mongoose = require("mongoose"); 
 
 const crearLibros = async(titulo, autor, descripcion) => {
     let libro1 = new libro ({
@@ -17,6 +9,9 @@ const crearLibros = async(titulo, autor, descripcion) => {
         description: descripcion
     });
     await libro1.save();
+    mongoose.connection.close(console.log("cerrado")); 
 };
 
 crearLibros("Quijote", "Cervantes", "Clásico de la literatura");
+crearLibros("Quijote", "Cervantes", "Clásico de la literatura");
+crearLibros("Fray Perico", "Cervantes", "Clásico de la literatura");
