@@ -3,4 +3,8 @@ mongoose.connect("mongodb://localhost/PruebaMongoose", {useNewUrlParser:true, us
 
 mongoose.connection.on("open", _=>{
     console.log ("Se ha conectado");
-})
+});
+
+const cerrar = async()=>{
+    await mongoose.connection.close(console.log("cerrado"));
+};

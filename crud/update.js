@@ -1,21 +1,24 @@
 require ("../conexion");
 const libro = require ("../models/libro");
-const mongoose = require("mongoose"); 
 
-const updateLibro = async (titulo, campoCambio, nuevoValor) => {
-    
-    // const nuevoLibro = await libro.findOneAndUpdate ({title: titulo}, {cambio: nuevoValor}, {new: true});
-    // console.log (nuevoLibro);
-    let libroUpdate = new libro();
-    libroUpdate.author = campoCambio;
-    const nuevoLibro = await libro.findOneAndUpdate ({title: titulo}, {libroUpdate.author : nuevoValor}, {new: true})
-    console.log (nuevoLibro);
+const libroUpdate = async() =>{
 
-    
-    mongoose.connection.close(console.log("cerrado")); 
+    const libroBuscar = await libro.findOneAndUpdate({title:"Quijote"}, {author : "Cervantes JR JR", description : "Nueva descripción"}, {new : true}) ;
+    console.log(libroBuscar);
 };
 
-updateLibro ("Quijote","author", "Cervantes JrJr");  
+// const query = { name: 'borne' };
+// Model.update(query, { name: 'jason bourne' }, options, callback);
+
+// // is sent as
+// Model.update(query, { $set: { name: 'jason bourne' }}, options, function(err, res));
+// // if overwrite option is false. If overwrite is true, sent without the $set wrapper.
+
+libroUpdate();
+
+
+
+// updateLibro ("Quijote","author", "Cervantes JrJr");  
 
 //Meter en la llamada a la función el campo a cambiar.
 //Importar funciones?
